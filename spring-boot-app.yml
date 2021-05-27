@@ -30,4 +30,4 @@ spec:
               configMapKeyRef:
                 name: postgres-config
                 key: postgres_host
-        image: vogetisameer12/spring-boot-postgres-on-k8s:latest
+        image: vogetisameer12/spring-boot-postgres-on-k8s-sample:latest
