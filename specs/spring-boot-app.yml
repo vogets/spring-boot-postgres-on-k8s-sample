@@ -1,13 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spring-boot-postgres-sample
-  namespace: default
 spec:
-  replicas: 1
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-boot-postgres-sample
   template:
     metadata:
-      name: spring-boot-postgres-sample
       labels:
         app: spring-boot-postgres-sample
     spec:
@@ -27,6 +28,6 @@ spec:
           - name: POSTGRES_HOST
             valueFrom:
               configMapKeyRef:
-                name: hostname-config
+                name: postgres-config
                 key: postgres_host
-        image: vogetisameer12/spring-boot-postgres-on-k8s:latest
+        image: vogetisameer12/spring-boot-postgres-on-k8s:latest       
